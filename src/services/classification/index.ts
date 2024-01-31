@@ -2,10 +2,8 @@ import express, { Express } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-// import { getConnectedDb } from './db;
 import Database from './db';
-import ServiceRouter from './routes/ServiceRouter';
-import UserRouter from './routes/UserRouter';
+import { ServiceRouter, UserRouter, classficationRouter } from './routes';
 
 dotenv.config();
 
@@ -33,6 +31,7 @@ class Server {
     private routes() {
         this.app.use("/", ServiceRouter);
         this.app.use("/users", UserRouter);
+        this.app.use("/classification", classficationRouter);
     }
 
     private start() {

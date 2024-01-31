@@ -11,7 +11,7 @@ const WebcamCapture: React.FC = () => {
     const webcamRef = useRef<WebcamWithScreenshot>(null);
 
     useInterval(() => {
-        const imageSrc = webcamRef.current?.getScreenshot();
+        const imageSrc = webcamRef.current?.getScreenshot();//base64
         if (imageSrc) {
             sendImage(imageSrc);
             console.log('Image sent', imageSrc);
