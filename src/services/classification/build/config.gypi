@@ -413,9 +413,8 @@
     "v8_use_siphash": 1,
     "want_separate_host_toolset": 0,
     "nodedir": "C:\\Users\\Ajay singh\\AppData\\Local\\node-gyp\\Cache\\20.11.0",
-    "python": "C:\\Users\\Ajay singh\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "python": "C:\\Users\\Ajay singh\\AppData\\Local\\Programs\\Python\\Python36\\python.exe",
     "standalone_static_library": 1,
-    "msbuild_path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\MSBuild\\Current\\Bin\\MSBuild.exe",
-    "msvs_version": "2015"
+    "msbuild_path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\MSBuild\\Current\\Bin\\MSBuild.exe"
   }
 }
