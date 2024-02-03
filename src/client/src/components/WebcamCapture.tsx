@@ -14,7 +14,6 @@ const WebcamCapture: React.FC = () => {
         const imageSrc = webcamRef.current?.getScreenshot();//base64
         if (imageSrc) {
             sendImage(imageSrc);
-            console.log('Image sent', imageSrc);
         }
     }, 5000);
 

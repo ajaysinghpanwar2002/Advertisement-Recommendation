@@ -7,7 +7,7 @@ const sendImage = (imageSrc: string) => {
             'Content-Type': 'application/json'
         }
     })
-    .then(response => console.log(response))
+    .then(response => console.log("client side",response))
     .catch(error => console.error(error));
 };
 

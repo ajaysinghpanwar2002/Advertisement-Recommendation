@@ -25,8 +25,8 @@ class Server {
     }
 
     private routes() {
-        this.app.use("/", proxy('http://localhost:3001'));
         this.app.use("/recommendation", proxy('http://localhost:3002'));
+        this.app.use("/", proxy('http://localhost:3001'));
     }
 
     private start() {
