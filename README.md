@@ -1,2 +1,2 @@
-![architecture](./images/architecture.png)
-![Flow](./images/flow.png)
+![architecture](./readmeImages/architecture.png)
+![Flow](./readmeImages/flow.png)

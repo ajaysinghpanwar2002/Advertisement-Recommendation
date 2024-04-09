@@ -1,6 +1,4 @@
-import fs from 'fs';
-import process from 'process';
-import path, { resolve } from 'path';
+import path from 'path';
 import { Request, Response } from "express";
 import * as tf from '@tensorflow/tfjs-node';
 import * as faceapi from '@vladmandic/face-api';
@@ -64,9 +62,7 @@ class ClassificationController {
     public async getClassification(req: Request, res: Response): Promise<void> {
         try {
             const imageBase64: string = req.body.image;
-            // Remove the data URL scheme if it's present
             const base64Data = imageBase64.replace(/^data:image\/\w+;base64,/, "");
-            // Convert the base64 string back to binary data
             const imageBuffer = Buffer.from(base64Data, 'base64');
             const tensor = await this.generateTensorFromBuffer(imageBuffer);
 
