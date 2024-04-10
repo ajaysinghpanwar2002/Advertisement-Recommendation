@@ -101,9 +101,6 @@ class recommendationController {
     public async recommendationProvider(req: Request, res: Response) {
         try {
             const { age, gender } = req.body;
-            // this.createModel();
-            // const { X, Y } = this.createTrainingData();
-            // await this.trainModel(X, Y);
             const recommendedClass = await this.getRecommendedClass(age, gender);
 
             res.status(200).json(recommendedClass);
