@@ -34,7 +34,7 @@ class ClassificationController {
         return tensor;
     }
 
-    private async detect(tensor: tf.Tensor) { 
+    private async detect(tensor: tf.Tensor) {
         try {
             const result = await faceapi.detectAllFaces(tensor as any, new faceapi.TinyFaceDetectorOptions()).withAgeAndGender();// problem is here
             return result;
@@ -53,12 +53,6 @@ class ClassificationController {
         console.log("Loaded models successfully.");
     }
 
-    private print(face: any) {
-        const gender = face.gender;
-        const Age = Math.round(10 * face.age) / 10;
-        console.log(gender, Age);
-    }
-
     public async getClassification(req: Request, res: Response): Promise<void> {
         try {
             const imageBase64: string = req.body.image;
@@ -66,12 +60,21 @@ class ClassificationController {
             const imageBuffer = Buffer.from(base64Data, 'base64');
             const tensor = await this.generateTensorFromBuffer(imageBuffer);
 
+            const results = [];
             if (tensor) {
-                const result = await this.detect(tensor);
-                for (const face of result) this.print(face);
-                tensor.dispose();
+                const detectedFaces = await this.detect(tensor);
+                for (const face of detectedFaces) {
+                    const gender = face.gender;
+                    const Age = Math.round(10 * face.age) / 10;
+                    results.push({ gender, Age });
+                    tensor.dispose();
+                }
             }
-
+            if (results.length > 0) { 
+                res.json(results);
+            } else {
+                res.status(204).send('No faces detected.'); 
+            }
         } catch (e) {
             console.error(e);
             res.status(500).send('Error in classification controller.');
